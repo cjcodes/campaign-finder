@@ -1,0 +1,30 @@
+{
+  "name": "pattern-library",
+  "version": "3.0.15",
+  "main": [
+    "assets/neue.css",
+    "assets/neue.js"
+  ],
+  "ignore": [
+    ".jshintrc",
+    ".editorconfig",
+    ".gitignore",
+    ".jshintrc",
+    ".ruby-version",
+    ".scss-lint.yaml"
+  ],
+  "dependencies": {
+    "jquery": ">=1.7.2"
+  },
+  "homepage": "https://github.com/DoSomething/ds-neue",
+  "_release": "3.0.15",
+  "_resolution": {
+    "type": "version",
+    "tag": "v3.0.15",
+    "commit": "9418f586a17a8538083a2e53f567fe578b548f3c"
+  },
+  "_source": "git@github.com:DoSomething/ds-neue.git",
+  "_target": "~3.0.15",
+  "_originalSource": "git@github.com:DoSomething/ds-neue.git",
+  "_direct": true
+}

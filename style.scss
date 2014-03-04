@@ -1,0 +1,78 @@
+@import "ds-neue/pattern-library/scss/neue.scss";
+
+.campaign-finder {
+  @include outer-container;
+  @include fill-parent;
+  background-color: $light-gray;
+  @include pad(1rem 0);
+
+  p {
+    margin: 0;
+    font-size: $font-small;
+  }
+
+  .facet-field {
+    margin-left: 1.5rem;
+  }
+}
+
+.dropdown-menu {
+  display: none;
+}
+
+.open {
+  .caret-toggle:before {
+    margin-left: -1.5em;
+    margin-right: .5em;
+    margin-top: .25em;
+    border-top: .5em solid;
+    border-right: .5em solid transparent;
+    border-left: .5em solid transparent;
+  }
+
+  .dropdown-menu {
+    display: block;
+  }
+}
+
+.caret-toggle {
+  color: $purple;
+  cursor: pointer;
+
+  &:before {
+    content: ' ';
+    display: inline-block;
+    height: 0;
+    width: 0;
+    vertical-align: middle;
+    border-left: .5em solid;
+    border-top: .5em solid transparent;
+    border-bottom: .5em solid transparent;
+    margin-left: -1em;
+    margin-right: .5em;
+  }
+}
+
+.two-col {
+  -moz-column-count: 2;
+  -webkit-column-count: 2;
+  column-count: 2;
+}
+
+.toggle {
+  background: white;
+  padding: .5rem 1rem;
+}
+
+.toggle-lg {
+  @include span-columns(5 of 16);
+  &:first-child {
+    @include shift(1);
+  }
+}
+
+.toggle-sm {
+  @include span-columns(4 of 16);
+}
+
+
