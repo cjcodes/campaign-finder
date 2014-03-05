@@ -11,15 +11,15 @@
     <p class="facet-field">What are you passionate about?</p>
     <div class="dropdown-menu">
       <ul class="two-col">
-        <li>Animals</li>
-        <li>Bullying + Violence</li>
-        <li>Disasters</li>
-        <li>Discrimination</li>
-        <li>Education</li>
-        <li>Environment</li>
-        <li>Health</li>
-        <li>Homelessness + Poverty</li>
-        <li>Sex + Relationships</li>
+        <li><label><input name="cause" type="checkbox" value="" />Animals</label></li>
+        <li><label><input name="cause" type="checkbox" value="" />Bullying + Violence</label></li>
+        <li><label><input name="cause" type="checkbox" value="" />Disasters</label></li>
+        <li><label><input name="cause" type="checkbox" value="" />Discrimination</label></li>
+        <li><label><input name="cause" type="checkbox" value="" />Education</label></li>
+        <li><label><input name="cause" type="checkbox" value="" />Environment</label></li>
+        <li><label><input name="cause" type="checkbox" value="" />Health</label></li>
+        <li><label><input name="cause" type="checkbox" value="" />Homelessness + Poverty</label></li>
+        <li><label><input name="cause" type="checkbox" value="" />Sex + Relationships</label></li>
       </ul>
     </div>
   </div>
@@ -41,19 +41,32 @@
     <p class="facet-field">What would you like to do?</p>
     <div class="dropdown-menu">
       <ul class="two-col">
-        <li>Donate Something</li>
-        <li>Face to Face</li>
-        <li>Host an Event</li>
-        <li>Improve a Space</li>
-        <li>Make Something</li>
-        <li>Share Something</li>
-        <li>Start Something</li>
-        <li>Take a Stand</li>
+        <li><label><input name="action-type" type="checkbox" value="7" />Donate Something</label></li>
+        <li><label><input name="action-type" type="checkbox" value="3" />Face to Face</label></li>
+        <li><label><input name="action-type" type="checkbox" value="11" />Host an Event</label></li>
+        <li><label><input name="action-type" type="checkbox" value="8" />Improve a Space</label></li>
+        <li><label><input name="action-type" type="checkbox" value="9" />Make Something</label></li>
+        <li><label><input name="action-type" type="checkbox" value="18" />Share Something</label></li>
+        <li><label><input name="action-type" type="checkbox" value="10" />Start Something</label></li>
+        <li><label><input name="action-type" type="checkbox" value="20" />Take a Stand</label></li>
       </ul>
     </div>
   </div>
 </div>
 
+<div id="campaign-results"></div>
+
+
+<div id="campaign-finder-template" class="template">
+  <div class="campaign-result">
+    <div class="flag staff-pick">Staff Pick</div>
+    <div class="headline">
+      <h4></h4>
+      <p></p>
+      <div class="powered-by">Powered by <img /></div>
+    </div>
+  </div>
+</div>
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
 </body>

@@ -35,6 +35,23 @@
   }
 }
 
+.campaign-result {
+  position: relative;
+
+  @include media($tablet) {
+    @include span-columns(4);
+    height: 300px;
+  }
+
+  .headline {
+    height: 66%;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    @include linear-gradient(to top, rgba(34,31,31,1), rgba(34,31,31,0), $fallback: transparent);
+  }
+}
+
 .caret-toggle {
   color: $purple;
   cursor: pointer;
@@ -65,14 +82,20 @@
 }
 
 .toggle-lg {
-  @include span-columns(5 of 16);
-  &:first-child {
-    @include shift(1);
+  @include media($tablet) {
+    @include span-columns(5);
+    &:first-child {
+      @include shift(1);
+    }
   }
 }
 
 .toggle-sm {
-  @include span-columns(4 of 16);
+  @include media($tablet) {
+    @include span-columns(4);
+  }
 }
 
-
+.template {
+  display: none;
+}

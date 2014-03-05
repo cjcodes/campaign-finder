@@ -1705,6 +1705,27 @@ body.modal-open {
 .open .dropdown-menu {
   display: block; }
 
+.campaign-result {
+  position: relative; }
+  @media screen and (min-width: 768px) {
+    .campaign-result {
+      float: left;
+      display: block;
+      margin-right: 1.35135%;
+      width: 23.98649%;
+      height: 300px; }
+      .campaign-result:last-child {
+        margin-right: 0; } }
+  .campaign-result .headline {
+    height: 66%;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    background-color: transparent;
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #221f1f), color-stop(100%, rgba(34, 31, 31, 0)));
+    background-image: -webkit-linear-gradient(bottom, #221f1f, rgba(34, 31, 31, 0));
+    background-image: linear-gradient(to top,#221f1f, rgba(34, 31, 31, 0)); }
+
 .caret-toggle {
   color: #4e2b63;
   cursor: pointer; }
@@ -1729,20 +1750,25 @@ body.modal-open {
   background: white;
   padding: .5rem 1rem; }
 
-.toggle-lg {
-  float: left;
-  display: block;
-  margin-right: 1.35135%;
-  width: 30.32095%; }
-  .toggle-lg:last-child {
-    margin-right: 0; }
-  .toggle-lg:first-child {
-    margin-left: 6.33446%; }
+@media screen and (min-width: 768px) {
+  .toggle-lg {
+    float: left;
+    display: block;
+    margin-right: 1.35135%;
+    width: 30.32095%; }
+    .toggle-lg:last-child {
+      margin-right: 0; }
+    .toggle-lg:first-child {
+      margin-left: 6.33446%; } }
 
-.toggle-sm {
-  float: left;
-  display: block;
-  margin-right: 1.35135%;
-  width: 23.98649%; }
-  .toggle-sm:last-child {
-    margin-right: 0; }
+@media screen and (min-width: 768px) {
+  .toggle-sm {
+    float: left;
+    display: block;
+    margin-right: 1.35135%;
+    width: 23.98649%; }
+    .toggle-sm:last-child {
+      margin-right: 0; } }
+
+.template {
+  display: none; }
