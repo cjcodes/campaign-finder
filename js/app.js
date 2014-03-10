@@ -15,6 +15,4 @@ requirejs.config({
   }
 });
 
-var spreadsheetURL = 'https://docs.google.com/spreadsheet/pub?key=0AhC9IAsEWCJjdHhoaTRfd0VyN050bVhPeF9ucnhPVmc&output=html';
-
 requirejs(["app/main"]);

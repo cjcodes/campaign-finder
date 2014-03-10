@@ -6,7 +6,7 @@ var Campaign = function (data) {
 
     staffPick: false, // bs_field_staff_pick
     featured: false,
-    image: 'http://placekitten.com/300/300', //
+    image: 'http://lorempixel.com/600/600?' + Math.random()*, //
   };
 
   $.extend(this, defaults, this.convert(data));

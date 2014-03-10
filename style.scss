@@ -39,16 +39,25 @@
   position: relative;
 
   @include media($tablet) {
-    @include span-columns(4);
-    height: 300px;
+    width: 100%;
+    height: 50%;
+    background-size: cover;
   }
 
-  .headline {
+  .headline-wrapper {
     height: 66%;
     width: 100%;
     position: absolute;
     bottom: 0;
     @include linear-gradient(to top, rgba(34,31,31,1), rgba(34,31,31,0), $fallback: transparent);
+
+    .headline {
+      position: absolute;
+      bottom: 0;
+      * {
+        color: white;
+      }
+    }
   }
 }
 
@@ -96,6 +105,26 @@
   }
 }
 
+.multirow {
+  @include media($tablet) {
+    width: 25%;
+    height: 600px;
+    margin: 0;
+    float: left;
+  }
+}
+
+.single-result {
+  @include media($tablet) {
+    width: 50%;
+    height: 600px;
+    margin: 0;
+    float: left;
+    .campaign-result {
+      height: 100%;
+    }
+  }
+}
 .template {
   display: none;
 }
