@@ -1,7 +1,7 @@
 define([
   'jquery',
   'app/Campaign',
-  'app/CampaignResults'
+  'app/CampaignFinder'
 ], function ($) {
 
   $('[data-toggle]').click(function () {
@@ -9,13 +9,8 @@ define([
     $(this).parents('.' + toggleClass).toggleClass('open')
   });
 
-  CampaignResults.init($('#campaign-results'));
+  CampaignFinder.init($('#campaign-results'), $('input[name="cause"]'), $('input[name="time"]'), $('input[name="action-type"]'));
 
-  // http://192.168.1.139:8080/solr/collection1/select?q=*:*&fq=fs_field_active_hours:[*%20TO%202]&fq=bundle:campaign&wt=json&indent=true&facet=true&facet.field=fs_field_active_hours&facet.field=im_field_cause&facet.field=im_field_action_type
-  $.getJSON('sample.json', function (data) {
-    for (var i in data.response.docs) {
-      CampaignResults.add(new Campaign(data.response.docs[i]));
-    }
-  });
+  CampaignFinder.query();
 });
 

@@ -4,6 +4,7 @@ var CampaignResults = {
   $div: null,
   $multirow: null,
   $singlerow: null,
+
   lastMultirow: null,
   items: 0,
   max: 4,
@@ -14,6 +15,28 @@ var CampaignResults = {
     CampaignResults.$div = $div;
   },
 
+  parseResults: function (data) {
+    CampaignResults.clear();
+
+    for (var i in data.response.docs) {
+      CampaignResults.add(new Campaign(data.response.docs[i]));
+    }
+
+    CampaignResults.loading(false);
+  },
+
+  loading: function (setTo) {
+    if (setTo == undefined) {
+      setTo = true;
+    }
+
+    if (setTo === true) {
+      CampaignResults.$div.addClass('loading');
+    } else {
+      CampaignResults.$div.removeClass('loading');
+    }
+  },
+
   checkInit: function () {
     if (CampaignResults.$div === null) {
       throw 'Error: CampaignResults tracker is not initialized.';
@@ -21,7 +44,11 @@ var CampaignResults = {
   },
 
   clear: function () {
+    CampaignResults.checkInit();
     CampaignResults.$div.empty();
+
+    CampaignResults.items = 0;
+    CampaignResults.lastMultirow = null;
   },
 
   add: function (campaign) {
