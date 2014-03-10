@@ -7,7 +7,9 @@ var CampaignResults = {
 
   lastMultirow: null,
   items: 0,
-  max: 4,
+  maxCols: 4,
+
+  start: 0,
 
   init: function ($div) {
     CampaignResults.$multirow = $('<div class="multirow">');
@@ -17,6 +19,7 @@ var CampaignResults = {
 
   parseResults: function (data) {
     CampaignResults.clear();
+    CampaignResults.start
 
     for (var i in data.response.docs) {
       CampaignResults.add(new Campaign(data.response.docs[i]));
@@ -49,17 +52,19 @@ var CampaignResults = {
 
     CampaignResults.items = 0;
     CampaignResults.lastMultirow = null;
+    CampaignResults.start = 0;
   },
 
   add: function (campaign) {
     CampaignResults.checkInit();
 
-    if (campaign.featured && CampaignResults.items + 2 > CampaignResults.max) {
+    if (campaign.featured && CampaignResults.items + 2 > CampaignResults.maxCols) {
       return;
-    } else if (CampaignResults.items == CampaignResults.max){
+    } else if (CampaignResults.items == CampaignResults.maxCols){
       return;
     }
 
+    CampaignResults.start++;
     if (campaign.featured) {
       CampaignResults.$div.append(CampaignResults.$singlerow.clone().append(campaign.render()));
       CampaignResults.items += 2;
