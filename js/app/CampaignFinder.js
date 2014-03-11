@@ -12,6 +12,7 @@ var CampaignFinder = {
   // This would be awesome with an object key:value, but Solr allows multiple of the same key
   defaultQuery: [
     'fq=bundle:campaign',
+    //'fq=ss_field_search_image:[* TO *]',
     'wt=json',
     'indent=false',
     'facet=true',
@@ -26,23 +27,45 @@ var CampaignFinder = {
   fieldMap: {
     'cause': 'im_field_cause',
     'time': 'fs_field_active_hours',
-    'actionType': 'im_field_action_type'
+    'action-type': 'im_field_action_type'
   },
 
+  fieldMapInverse: {},
+
+  lastChanged: null,
+
   init: function ($resultsDiv, $causeFields, $timeFields, $actionTypeFields) {
+    CampaignFinder.invertFields();
     CampaignFinder.$fields.cause = $causeFields;
     CampaignFinder.$fields.time = $timeFields;
-    CampaignFinder.$fields.actionType = $actionTypeFields;
+    CampaignFinder.$fields['action-type'] = $actionTypeFields;
 
     CampaignResults.init($resultsDiv);
 
     for (var i in CampaignFinder.$fields) {
+      CampaignFinder.$fields[i].each(function (idx, element) {
+        var field = CampaignFinder.fieldMap[$(element).prop('name')]
+          , val = $(element).val()
+        ;
+
+        CampaignFinder.defaultQuery.push('facet.query=' + field + ':' + val);
+      });
+
       CampaignFinder.$fields[i].change(function () {
+        CampaignFinder.lastChanged = $(this).attr('name');
         if (document.body.clientWidth >= CampaignFinder.cssBreakpoint) {
           clearTimeout(CampaignFinder.throttle);
           CampaignFinder.throttle = setTimeout(CampaignFinder.query, CampaignFinder.throttleTimeout);
         }
       });
+    }
+  },
+
+  invertFields: function () {
+    for (var prop in CampaignFinder.fieldMap) {
+      if(CampaignFinder.fieldMap.hasOwnProperty(prop)) {
+        CampaignFinder.fieldMapInverse[CampaignFinder.fieldMap[prop]] = prop.replace(/(.)([A-Z])/g, '$1-$2').toLowerCase();
+      }
     }
   },
 
@@ -73,9 +96,36 @@ var CampaignFinder = {
     CampaignFinder.xhr = $.ajax({
       dataType: 'jsonp',
       url: CampaignFinder.buildQuery(query, q),
-      success: CampaignResults.parseResults,
+      success: function (data) {
+        console.log(data);
+        CampaignResults.parseResults(data);
+        CampaignFinder.disableFields(data.facet_counts.facet_queries);
+      },
       jsonp: 'json.wrf'
     });
+  },
+
+  disableFields: function (results) {
+    for (var key in results) {
+      var keyArr = key.split(':');
+      var field = keyArr[0]
+        , value = keyArr[1];
+
+      if (CampaignFinder.fieldMapInverse[field] !== CampaignFinder.lastChanged) {
+        var $e = $('input[name="' + CampaignFinder.fieldMapInverse[field] + '"]')
+          , $checkbox = $e.filter('[value="'+value+'"]'),
+            disabled = results[key] == 0
+        ;
+
+        $checkbox.prop('disabled', disabled);
+        if (disabled) {
+          $checkbox.prop('checked', !disabled);
+          $checkbox.parents('label').addClass('disabled');
+        } else {
+          $checkbox.parents('label').removeClass('disabled');
+        }
+      }
+    }
   },
 
   buildQuery: function (query, q) {
@@ -87,7 +137,7 @@ var CampaignFinder = {
     }
 
     query = query.join('&');
-    return CampaignFinder.baseURL + CampaignFinder.collection + '/select?' + query + '&rows=10&start=' + CampaignResults.start;
+    return CampaignFinder.baseURL + CampaignFinder.collection + '/select?' + query + '&rows=10';
   },
 
   generatePowerset: function (params) {

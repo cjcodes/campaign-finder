@@ -19,7 +19,8 @@ Campaign.prototype.convert = function (data) {
     'sm_field_call_to_action': 'description',
     'url': 'url',
     'bs_field_staff_pick': 'staffPick',
-    'bs_sticky': 'featured'
+    'bs_sticky': 'featured',
+    //'ss_field_search_image': 'image'
   };
 
   for (var i in data) {

@@ -19,7 +19,6 @@ var CampaignResults = {
 
   parseResults: function (data) {
     CampaignResults.clear();
-    CampaignResults.start
 
     for (var i in data.response.docs) {
       CampaignResults.add(new Campaign(data.response.docs[i]));
