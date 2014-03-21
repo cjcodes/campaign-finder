@@ -1732,6 +1732,7 @@ body.modal-open {
   max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
+  width: 100%;
   position: relative;
   height: 600px; }
   #campaign-results:before, #campaign-results:after {
@@ -1760,33 +1761,6 @@ body.modal-open {
     font-size: 5em;
     width: 100%;
     text-align: center; }
-
-.campaign-result {
-  position: relative; }
-  @media screen and (min-width: 768px) {
-    .campaign-result {
-      width: 100%;
-      height: 50%;
-      background-size: cover; } }
-  .campaign-result .headline-wrapper {
-    height: 66%;
-    width: 100%;
-    position: absolute;
-    bottom: 0;
-    background-color: transparent;
-    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, transparent), color-stop(100%, black));
-    background-image: -webkit-linear-gradient(transparent, black);
-    background-image: linear-gradient(transparent, black); }
-    .campaign-result .headline-wrapper .headline {
-      position: absolute;
-      bottom: 0;
-      margin: 0 1em; }
-      .campaign-result .headline-wrapper .headline * {
-        color: white; }
-    .campaign-result .headline-wrapper h3 {
-      margin: 0;
-      margin-bottom: .2em;
-      line-height: 1.1em; }
 
 .caret-toggle {
   color: #4e2b63;
@@ -1832,16 +1806,63 @@ body.modal-open {
     .toggle-sm:last-child {
       margin-right: 0; } }
 
-@media screen and (min-width: 768px) {
-  .multirow {
-    width: 25%;
-    height: 600px;
-    margin: 0;
-    float: left; } }
-.multirow p {
-  font-size: .9em;
-  line-height: 1em;
-  margin-top: 0; }
+.multirow {
+  float: left;
+  display: block;
+  margin-right: 2.73973%;
+  width: 48.63014%;
+  height: 600px;
+  margin-right: 0; }
+  .multirow:last-child {
+    margin-right: 0; }
+  @media screen and (min-width: 768px) {
+    .multirow {
+      float: left;
+      display: block;
+      margin-right: 1.35135%;
+      width: 23.98649%;
+      margin-right: 0;
+      margin: 0; }
+      .multirow:last-child {
+        margin-right: 0; } }
+  .multirow p {
+    font-size: .9em;
+    line-height: 1em;
+    margin-top: 0; }
+
+.campaign-result {
+  position: relative;
+  display: block;
+  height: 50%;
+  width: 100%;
+  background-image: url("http://meragharkharcha.com/MGK_war/images/indicator.gif");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  -webkit-transition: background-image 0.5s ease-in-out;
+  -moz-transition: background-image 0.5s ease-in-out;
+  -ms-transition: background-image 0.5s ease-in-out;
+  -o-transition: background-image 0.5s ease-in-out;
+  transition: background-image 0.5s ease-in-out; }
+  .campaign-result .headline-wrapper {
+    height: 66%;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    background-color: transparent;
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, transparent), color-stop(100%, black));
+    background-image: -webkit-linear-gradient(transparent, black);
+    background-image: linear-gradient(transparent, black); }
+    .campaign-result .headline-wrapper .headline {
+      position: absolute;
+      bottom: 0;
+      margin: 0 1em; }
+      .campaign-result .headline-wrapper .headline * {
+        color: white; }
+    .campaign-result .headline-wrapper h3 {
+      margin: 0;
+      margin-bottom: .2em;
+      line-height: 1.1em; }
 
 @media screen and (min-width: 768px) {
   .single-result {
