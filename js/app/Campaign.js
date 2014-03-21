@@ -54,13 +54,13 @@ Campaign.prototype.convert = function (data) {
  */
 Campaign.prototype.render = function () {
   // Clone from the embedded template
-  var $wrapper = $('#campaign-finder-template>div').clone();
+  var $wrapper = $('#campaign-finder-template>a').clone();
 
   var preload = new Image();
   preload.src = this.image;
   var t = setInterval(function () {
     if (preload.complete) {
-      $wrapper.css('background-image', 'url(' + this.image + ')');
+      $wrapper.css('background-image', 'url(' + preload.src + ')').addClass('loaded');
       clearInterval(t);
     }
   }, 5);
@@ -79,6 +79,7 @@ Campaign.prototype.render = function () {
   // Set the content
   $wrapper.find('p').html(this.description);
   $wrapper.find('h3').html(this.title);
+  $wrapper.attr('href', this.url);
   if (false) {
     $wrapper.find('.powered-by img').prop('src', '');
   } else {
