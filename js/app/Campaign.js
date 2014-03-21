@@ -69,8 +69,8 @@ Campaign.prototype.render = function () {
   }
 
   // Set the content
-  $wrapper.find('p').text(this.description);
-  $wrapper.find('h3').text(this.title);
+  $wrapper.find('p').html(this.description);
+  $wrapper.find('h3').html(this.title);
   if (false) {
     $wrapper.find('.powered-by img').prop('src', '');
   } else {
