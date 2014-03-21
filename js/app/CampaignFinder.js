@@ -239,6 +239,19 @@ var CampaignFinder = {
           // Oh, hey! It's re-enabled! Let's make it look purdier than it was.
           $checkbox.parents('label').removeClass('disabled');
         }
+      } else {
+        // First, we see if all fields are unchecked
+        for (var i in CampaignFinder.$fields) {
+          if (CampaignFinder.$fields[i].filter(':checked').length > 0) {
+            return;
+          }
+        }
+
+        // If they are, let's remove the disabled class
+        for (var i in CampaignFinder.$fields) {
+          CampaignFinder.$fields[i].prop('disabled', false)
+            .parents('label').removeClass('disabled');
+        }
       }
     }
   },
