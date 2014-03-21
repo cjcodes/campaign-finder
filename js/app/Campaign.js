@@ -56,7 +56,15 @@ Campaign.prototype.render = function () {
   // Clone from the embedded template
   var $wrapper = $('#campaign-finder-template>div').clone();
 
-  $wrapper.css('background-image', 'url(' + this.image + ')');
+  var preload = new Image();
+  preload.src = this.image;
+  var t = setInterval(function () {
+    if (preload.complete) {
+      $wrapper.css('background-image', 'url(' + this.image + ')');
+      clearInterval(t);
+    }
+  }, 5);
+
 
   // If this isn't a staff pick, remove the flag dif
   if (!this.staffPick) {
