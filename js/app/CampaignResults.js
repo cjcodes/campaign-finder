@@ -66,11 +66,7 @@ var CampaignResults = {
     }
 
     // If we're loading, add a class to the results div. Otherwise, remove it.
-    if (setTo === true) {
-      CampaignResults.$div.addClass('loading');
-    } else {
-      CampaignResults.$div.removeClass('loading');
-    }
+    CampaignResults.$div.toggleClass('loading', setTo);
   },
 
   /**

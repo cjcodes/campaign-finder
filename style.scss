@@ -9,15 +9,48 @@
   p {
     margin: 0;
     font-size: $font-small;
+    font-weight: normal;
   }
 
   .facet-field {
     margin-left: 1.5rem;
+    font-weight: 800;
+  }
+
+  p.facet-field {
+    color: lighten($med-gray, 20%);
+    font-weight: normal;
+    line-height: .9em;
+  }
+
+  label {
+    cursor: pointer;
+    padding-left: .5em;
+    padding-right: .5em;
+    margin: .2em 0;
+    font-size: 0.8em;
+    font-weight: normal;
+
+    input {
+      display: none;
+    }
+
+    &.disabled {
+      color: $light-gray;
+    }
+
+    &.checked {
+      background: $yellow;
+    }
   }
 }
 
-.dropdown-menu {
-  display: none;
+.dropdown {
+  margin: 1em;
+
+  .dropdown-menu {
+    display: none;
+  }
 }
 
 .open {
@@ -32,12 +65,18 @@
 
   .dropdown-menu {
     display: block;
+    margin-top: 0.5em;
   }
 }
 
 #campaign-results {
+  @include outer-container;
   position: relative;
   height: 600px;
+
+  p {
+    margin-bottom: 1em;
+  }
 
   &.loading {
     &:before {
@@ -78,14 +117,21 @@
     width: 100%;
     position: absolute;
     bottom: 0;
-    @include linear-gradient(to top, rgba(34,31,31,1), rgba(34,31,31,0), $fallback: transparent);
+    @include linear-gradient(transparent, black);
 
     .headline {
       position: absolute;
       bottom: 0;
+      margin: 0 1em;
       * {
         color: white;
       }
+    }
+
+    h3 {
+      margin: 0;
+      margin-bottom: .2em;
+      line-height: 1.1em;
     }
   }
 }
@@ -121,16 +167,16 @@
 
 .toggle-lg {
   @include media($tablet) {
-    @include span-columns(5);
+    @include span-columns(5.5);
     &:first-child {
-      @include shift(1);
+      @include shift(.75);
     }
   }
 }
 
 .toggle-sm {
   @include media($tablet) {
-    @include span-columns(4);
+    @include span-columns(3.5);
   }
 }
 
@@ -141,6 +187,12 @@
     margin: 0;
     float: left;
   }
+  p {
+    font-size: .9em;
+    line-height: 1em;
+    margin-top: 0;
+  }
+
 }
 
 .single-result {
@@ -153,11 +205,24 @@
       height: 100%;
     }
   }
+  p {
+    font-size: .9em;
+    margin-top: 0;
+  }
 }
 .template {
   display: none;
 }
 
-label.disabled {
-  background: rgba(255, 0, 0, .3);
+.flag {
+  background: $yellow;
+  color: black;
+  text-transform: uppercase;
+  display: inline;
+  padding: .2em .5em;
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-weight: 600;
+  font-size: .9em;
 }

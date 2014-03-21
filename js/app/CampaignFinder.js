@@ -102,6 +102,7 @@ var CampaignFinder = {
 
       // Attach ourselves to the 'change' event on the input fields
       CampaignFinder.$fields[i].change(function () {
+        $(this).parents('label').toggleClass('checked', $(this).is(':checked'));
         // Save the last checkbox that we checked so we don't disable any of
         // those fields if we're trying to select multiple
         CampaignFinder.lastChanged = $(this).attr('name');
@@ -233,7 +234,7 @@ var CampaignFinder = {
           $checkbox.prop('checked', !disabled);
 
           // And add a class so we can make it look purdy.
-          $checkbox.parents('label').addClass('disabled');
+          $checkbox.parents('label').removeClass('checked').addClass('disabled');
         } else {
           // Oh, hey! It's re-enabled! Let's make it look purdier than it was.
           $checkbox.parents('label').removeClass('disabled');
