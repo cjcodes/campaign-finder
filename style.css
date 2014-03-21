@@ -1703,7 +1703,9 @@ body.modal-open {
     padding-right: .5em;
     margin: .2em 0;
     font-size: 0.8em;
-    font-weight: normal; }
+    font-weight: normal;
+    float: none;
+    display: block; }
     .campaign-finder label input {
       display: none; }
     .campaign-finder label.disabled {
@@ -1713,6 +1715,9 @@ body.modal-open {
 
 .dropdown {
   margin: 1em; }
+  @media screen and (min-width: 768px) {
+    .dropdown {
+      margin: 0; } }
   .dropdown .dropdown-menu {
     display: none; }
 
@@ -1785,6 +1790,8 @@ body.modal-open {
 .toggle {
   background: white;
   padding: .5rem 1rem; }
+  .toggle li {
+    display: block; }
 
 @media screen and (min-width: 768px) {
   .toggle-lg {
@@ -1807,24 +1814,13 @@ body.modal-open {
       margin-right: 0; } }
 
 .multirow {
+  width: 50%;
   float: left;
-  display: block;
-  margin-right: 2.73973%;
-  width: 48.63014%;
-  height: 600px;
-  margin-right: 0; }
-  .multirow:last-child {
-    margin-right: 0; }
+  height: 600px; }
   @media screen and (min-width: 768px) {
     .multirow {
-      float: left;
-      display: block;
-      margin-right: 1.35135%;
-      width: 23.98649%;
-      margin-right: 0;
-      margin: 0; }
-      .multirow:last-child {
-        margin-right: 0; } }
+      width: 25%;
+      margin: 0; } }
   .multirow p {
     font-size: .9em;
     line-height: 1em;
@@ -1890,3 +1886,17 @@ body.modal-open {
   left: 0;
   font-weight: 600;
   font-size: .9em; }
+
+.campaign-search {
+  text-align: center; }
+  @media screen and (min-width: 768px) {
+    .campaign-search {
+      display: none; } }
+  .campaign-search button {
+    background: #23b7fb;
+    color: white;
+    border: 0;
+    padding: .5em 1em;
+    font-size: 1.5em;
+    border-radius: .5em;
+    cursor: pointer; }

@@ -62,11 +62,12 @@ var CampaignFinder = {
    * Initialize the Campaign Finder and, by extension, the Campaign Results handler
    *
    * @param  {JQuery} $resultsDiv       The div that the results will be injected into
+   * @param  {JQuery} $searcuBuggon     <button> that mobile users click to initiate the search
    * @param  {JQuery} $causeFields      Input fields related to the cause field
    * @param  {JQuery} $timeFields       Input fields related to the time field
    * @param  {JQuery} $actionTypeFields Input fields related to the action type field
    */
-  init: function ($resultsDiv, $causeFields, $timeFields, $actionTypeFields) {
+  init: function ($resultsDiv, $searchButton, $causeFields, $timeFields, $actionTypeFields) {
     // Create an inverse mapping so we can go from Solr field name to local field name
     CampaignFinder.invertFields();
 
@@ -77,6 +78,9 @@ var CampaignFinder = {
 
     // Initialize the CampaignResults
     CampaignResults.init($resultsDiv);
+
+    // Store the button
+    CampaignFinder.$searchButton = $searchButton;
 
     // Loop through each field selector
     for (var i in CampaignFinder.$fields) {
@@ -115,6 +119,13 @@ var CampaignFinder = {
           // Set a timeout so we don't immediately ping the Solr server
           CampaignFinder.throttle = setTimeout(CampaignFinder.query, CampaignFinder.throttleTimeout);
         }
+      });
+
+      CampaignFinder.$searchButton.click(function () {
+        CampaignFinder.query();
+        $('hml,body').animate({
+          scrollTop: CampaignResults.$div.offset().scrollTop
+        }, 1000);
       });
     }
   },
